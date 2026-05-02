@@ -1,16 +1,3 @@
-<#
-.SYNOPSIS
-    Signs off disconnected RDS/terminal sessions
-
-.DESCRIPTION
-    Queries active sessions using 'quser', finds disconnected ones,
-    extracts the session ID and logs them off automatically.
-
-.NOTES
-    Author: Adiel Miller
-    Use case: Clean up ghost sessions on RDS servers
-#>
-
 $users = quser | Select-String "Disc"
 foreach ($line in $users) {
     if ($line -match '(\d+)') {
