@@ -1,6 +1,5 @@
 $users = quser | Select-String "Disc"
 foreach ($line in $users) {
-    # חיפוש המספר הראשון בשורה (שהוא ה-Session ID) בעזרת Regex
     if ($line -match '(\d+)') {
         $sessionId = $matches[1]
         logoff $sessionId
